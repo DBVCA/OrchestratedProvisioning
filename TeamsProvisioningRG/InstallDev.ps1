@@ -1,7 +1,7 @@
 # Provision storage and function app
 .\Deploy-AzureResourceGroup.ps1 `
-    -ResourceGroupLocation EastUS `
-    -ResourceGroupName TeamsProvisioningDev `
+    -ResourceGroupLocation WestUS `
+    -ResourceGroupName TeamsOrchestrationDev `
     -TemplateParametersFile dev.parameters.json
 
 # Ensure storage queues are in place
