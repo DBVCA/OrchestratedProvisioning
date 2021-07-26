@@ -27,6 +27,8 @@ module.exports = async function (context, myQueueItem) {
                 var newTeamId;
 
                 context.log(`Creating Team ${displayName} using ${jsonTemplate} json template`);
+                context.log(settings().TENANT_NAME);
+                context.log(settings().TEMPLATE_SITE_URL);
 
                 getToken(context)
                 .then ((accessToken) => {
