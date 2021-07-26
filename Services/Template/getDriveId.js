@@ -9,7 +9,8 @@ module.exports = function getDriveId(context, token, siteId,
         const url = `https://graph.microsoft.com/v1.0/sites/` +
                     `${siteId}/drives`;
         try {
-
+			context.log('Library: ' + libraryName);
+			context.log('URL: ' + url);
             request.get(url, {
                 'auth': {
                     'bearer': token
