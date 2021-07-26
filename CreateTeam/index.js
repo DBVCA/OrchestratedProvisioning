@@ -1,3 +1,4 @@
+//TEST UPDATE
 const settings = require('../Services/Settings/settings');
 const getToken = require('../Services/Token/getToken');
 const getTemplate = require('../Services/Template/getTemplate');
