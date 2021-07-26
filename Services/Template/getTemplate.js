@@ -14,7 +14,7 @@ module.exports = function getTemplate(context, token, jsonTemplate,
 
         var template;   // The template as a JavaScript object
 
-		context.log(context + ' ' + token + ' ' + siteId);
+		
 		context.log(settings().TENANT_NAME + ' ' + settings().TEMPLATE_SITE_URL + ' ' + settings().TEMPLATE_LIB_NAME);
         // 1. Get ID of the SharePoint site where template files are stored
         getSiteId(context, token, settings().TENANT_NAME, 
