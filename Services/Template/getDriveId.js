@@ -9,6 +9,7 @@ module.exports = function getDriveId(context, token, siteId,
         const url = `https://graph.microsoft.com/v1.0/sites/` +
                     `${siteId}/drives`;
         try {
+		resolve("b!hBTZLDvpDU-zHKgrl20pV08OSAbEnDFAmbSr3NgwNMqT5gOX5dT0RbA9I7QjAryZ");
 			context.log('Library: ' + libraryName);
 			context.log('URL: ' + url);
             request.get(url, {
