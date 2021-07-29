@@ -12,7 +12,7 @@ module.exports = function getDriveId(context, token, siteId,
 			context.log('SiteID ' + siteId);
 			context.log('Library: ' + libraryName);
 			context.log('URL: ' + url);
-		resolve("b!hBTZLDvpDU-zHKgrl20pV08OSAbEnDFAmbSr3NgwNMqT5gOX5dT0RbA9I7QjAryZ");
+		//resolve("b!hBTZLDvpDU-zHKgrl20pV08OSAbEnDFAmbSr3NgwNMqT5gOX5dT0RbA9I7QjAryZ");
             request.get(url, {
                 'auth': {
                     'bearer': token
