@@ -49,6 +49,9 @@ module.exports = function getTemplate(context, token, jsonTemplate,
 			 context.log(dbvmid);
 			context.log(dbvm2id);
 			context.log(nikiID);
+			context.log(ownerId);
+			context.log('${ownerId}');
+			context.log(${ownerId});
 		    template['displayName'] = displayName;
 		    template['description'] = description;
 		    template['owners@odata.bind'] = [
