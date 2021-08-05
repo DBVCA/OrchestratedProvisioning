@@ -39,19 +39,22 @@ module.exports = function getTemplate(context, token, jsonTemplate,
 		    template = JSON.parse(templateString.trimLeft());
 		    return getUserId (context, token, owner);
 		})
-	
+		.then(nikiID) => {
+			return getUserId (context,token,'nmorejon@vca-green.com');
+		})
 		
 		.then((ownerId) => {
 		// 6. Add the per-team properties to the template  '${ownerId}'
-			nikiID= getUserId (context,token,'nmorejon@vca-green.com');
-			dbvmid = getUserId (context, token, 'dbvm@vcastructural.com');
-			dbvm2id = getUserId (context, token, 'DBVM.2@vcastructural.com');
-			 context.log(dbvmid);
+			nikiID= 
+			dbvmid = getUserId (context, token, 'dbvm@vcastructural.com')
+			.then (context.log(dbvmid))
+			.then(dbvm2id = getUserId (context, token, 'DBVM.2@vcastructural.com'));
+			
+			 
 			context.log(dbvm2id);
-			context.log('${nikiID}');
+			context.log(nikiID);
 			context.log(ownerId);
-			context.log('${ownerId}');
-			//context.log(${ownerId});
+
 		    template['displayName'] = displayName;
 		    template['description'] = description;
 		    template['owners@odata.bind'] = [
