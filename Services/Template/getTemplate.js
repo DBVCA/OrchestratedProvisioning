@@ -36,16 +36,6 @@ module.exports = function getTemplate(context, token, jsonTemplate,
 		.then((templateString) => {
 
 		// 5. Parse the template; get owner's user ID
-			templateString = templateString + ',
-			/'channels/': [
-        {
-            /'displayName/': /'REMDesign Phase-' + displayName +'/',
-            /'isFavoriteByDefault/': true,
-            /'description/': /'/'
-        }
-
-
-    ]'
 		    template = JSON.parse(templateString.trimLeft());
 		    return getUserId (context, token, owner);
 		})
@@ -59,6 +49,9 @@ module.exports = function getTemplate(context, token, jsonTemplate,
 		    template['owners@odata.bind'] = [
 			`https://graph.microsoft.com/beta/users('${ownerId}')`
 		    ];
+		template['channels'][0]['displayName'] = 'Design Phase-' + displayName;
+		template['channels'][1]['displayName'] = 'Energy Modeling-' + displayName;
+		template['channels'][2]['displayName'] = 'Field Services-' + displayName;
 //		    template['channels'] = [
 //				{
 //				    'displayName': 'Design Phase-${displayname}',
