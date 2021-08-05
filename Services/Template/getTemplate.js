@@ -49,7 +49,7 @@ module.exports = function getTemplate(context, token, jsonTemplate,
 		    template['displayName'] = displayName;
 		    template['description'] = description;
 		    template['owners@odata.bind'] = [
-			`https://graph.microsoft.com/beta/users('${dbvm2id}')`,`https://graph.microsoft.com/beta/users('${dbvmid}')`
+			`https://graph.microsoft.com/beta/users('${dbvm2id}')`
 		    ];
 		    
 		template['channels'][0]['displayName'] = 'Design Phase-' + displayName;https://github.com/DBVCA/OrchestratedProvisioning/blob/dev/Services/Template/getTemplate.js
