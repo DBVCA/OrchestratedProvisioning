@@ -43,15 +43,24 @@ module.exports = function getTemplate(context, token, jsonTemplate,
 		
 		.then((ownerId) => {
 		// 6. Add the per-team properties to the template
-
+			nikiID= getUserId (context,token,'nmorejon@vca-green.com');
+			dbvmid = getUserId (context, token, 'dbvm@vcastructural.com');
+			dbvm2id = getUserId (context, token, 'DBVM.2@vcastructural.com');
+		    template['displayName'] = displayName;
+		    template['description'] = description;
+		    template['owners@odata.bind'] = [
+			`https://graph.microsoft.com/beta/users('${ownerId}')`,`https://graph.microsoft.com/beta/users('${dbvmid}')`
+		    ];
+		    
 		    template['displayName'] = displayName;
 		    template['description'] = description;
 		    template['owners@odata.bind'] = [
 			`https://graph.microsoft.com/beta/users('${ownerId}')`
 		    ];
-		template['channels'][0]['displayName'] = 'Design Phase-' + displayName;
+		template['channels'][0]['displayName'] = 'Design Phase-' + displayName;https://github.com/DBVCA/OrchestratedProvisioning/blob/dev/Services/Template/getTemplate.js
 		template['channels'][1]['displayName'] = 'Energy Modeling-' + displayName;
 		template['channels'][2]['displayName'] = 'Field Services-' + displayName;
+			template['membersodata.bind'] = [`graph.microsoft.com/beta/users('${dbvm2id}')`];
 //		    template['channels'] = [
 //				{
 //				    'displayName': 'Design Phase-${displayname}',
