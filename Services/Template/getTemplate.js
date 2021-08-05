@@ -109,6 +109,7 @@ module.exports = function getTemplate(context, token, jsonTemplate,
 		.catch((ex) => {
 		    reject(`Error in getTemplate(): ${ex}`);
 		});
+		});
 	}
         
 
