@@ -19,7 +19,7 @@ module.exports = function getTemplate(context, token, jsonTemplate,
 		context.log(settings().TENANT_NAME + ' ' + settings().TEMPLATE_SITE_URL + ' ' + settings().TEMPLATE_LIB_NAME);
 		// 1. Get ID of the SharePoint site where template files are stored
 		getSiteId(context, token, settings().TENANT_NAME, 
-		    settings().TEMPLATE_SITE_URL)
+            settings().TEMPLATE_SITE_URL)
 		.then((siteId) => {
 		// 2. Get the Graph API drive ID for the doc library where template files are stored
 		     return getDriveId(context, token, siteId, settings().TEMPLATE_LIB_NAME);
@@ -39,7 +39,7 @@ module.exports = function getTemplate(context, token, jsonTemplate,
 		    template = JSON.parse(templateString.trimLeft());
 		    return getUserId (context, token, owner);
 		})
-		.then(nikiID) => {
+		.then((nikiID) => {
 			return getUserId (context,token,'nmorejon@vca-green.com');
 		})
 		
