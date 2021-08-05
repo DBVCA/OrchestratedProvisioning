@@ -45,10 +45,10 @@ module.exports = function getTemplate(context, token, jsonTemplate,
 		
 		.then((ownerId) => {
 		// 6. Add the per-team properties to the template  '${ownerId}'
-			nikiID=  getUserId (context,token,'nmorejon@vca-green.com')
-			.then (dbvmid = getUserId (context, token, 'dbvm@vcastructural.com'))
-			.then (context.log(dbvmid))
-			.then(dbvm2id = getUserId (context, token, 'DBVM.2@vcastructural.com'));
+			nikiID=  getUserId (context,token,'nmorejon@vca-green.com');
+			dbvmid = getUserId (context, token, 'dbvm@vcastructural.com');
+			context.log(dbvmid);
+			dbvm2id = getUserId (context, token, 'DBVM.2@vcastructural.com');
 			
 			 
 			context.log(dbvm2id);
