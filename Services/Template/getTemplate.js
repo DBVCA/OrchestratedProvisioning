@@ -36,7 +36,7 @@ module.exports = function getTemplate(context, token, jsonTemplate,
 		.then((templateString) => {
 
 		// 5. Parse the template; get owner's user ID
-			templateString += ",
+			templateString = templateString + ",
 			'channels': [
         {
             'displayName': 'REMDesign Phase-" + displayName +',
