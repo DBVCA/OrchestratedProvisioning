@@ -38,18 +38,43 @@ module.exports = function getTemplate(context, token, jsonTemplate,
             template = JSON.parse(templateString.trimLeft());
             return getUserId (context, token, owner);
         })
-        .then((ownerId) => {
-        // 6. Add the per-team properties to the template
+	if( jsonTemplate == "GreenTemplate")
+	{
+		
+		.then((ownerId) => {
+		// 6. Add the per-team properties to the template
 
-            template['displayName'] = displayName;
-            template['description'] = description;
-            template['owners@odata.bind'] = [
-                `https://graph.microsoft.com/beta/users('${ownerId}')`
-            ];
+		    template['displayName'] = displayName;
+		    template['description'] = description;
+		    template['owners@odata.bind'] = [
+			`https://graph.microsoft.com/beta/users('${ownerId}')`
+		    ];
+		    template['channels'] = [
+				{
+				    'displayName': 'Design Phase-${displayname}',
+				    'isFavoriteByDefault': true,
+				    'description': ''
+				}
+			    ]
+		// 7. Return the finished template as a string
+		    resolve(JSON.stringify(template));
+		})
+	}
+	else
+	{
+		.then((ownerId) => {
+		// 6. Add the per-team properties to the template
 
-        // 7. Return the finished template as a string
-            resolve(JSON.stringify(template));
-        })
+		    template['displayName'] = displayName;
+		    template['description'] = description;
+		    template['owners@odata.bind'] = [
+			`https://graph.microsoft.com/beta/users('${ownerId}')`
+		    ];
+
+		// 7. Return the finished template as a string
+		    resolve(JSON.stringify(template));
+		})	
+	}
         .catch((ex) => {
             reject(`Error in getTemplate(): ${ex}`);
         });
