@@ -4,6 +4,7 @@ const getToken = require('../Services/Token/getToken');
 const getTemplate = require('../Services/Template/getTemplate');
 const createTeam = require('../Services/Team/createTeam');
 const getChannelId = require('../Services/Team/getChannelId');
+const url = `https://graph.microsoft.com/beta/teams`;
 
 module.exports = async function (context, myQueueItem) {
 
@@ -26,6 +27,7 @@ module.exports = async function (context, myQueueItem) {
                 const requestId = myQueueItem.requestId || "";
                 const jsonTemplate = myQueueItem.jsonTemplate;
                 var newTeamId;
+                var CadTeamChannelID;
 
                 context.log(`Creating Team ${displayName} using ${jsonTemplate} json template`);
                 context.log(settings().TENANT_NAME);
@@ -47,6 +49,22 @@ module.exports = async function (context, myQueueItem) {
                     return getChannelId(context, token, newTeamId, "General");
                 })
                 .then((channelId) => {
+                    //newChannelID = channelId;
+                    new Promise(resolve, reject) => {  
+                    CadTeamChannelID =  getChannelId(context, token, newTeamId, "CAD Team");
+                    .then((cadChannelId)  => {
+                                const Channelurl = `https://graph.microsoft.com/beta/teams/${newTeamID}/channels/${cadChannelId}/filesFolder`;
+                                context.log(Channelurl);
+                                request.post(url, {
+                                  'name': 'Setup',
+                                  'folder': { },
+                                  '@microsoft.graph.conflictBehavior': 'fail'
+                                });
+                                
+                        }
+                        
+                        
+                    };
                     context.bindings.myOutputQueueItem = {
                         success: true,
                         requestId: requestId,
@@ -57,8 +75,10 @@ module.exports = async function (context, myQueueItem) {
                         owner: owner,
                         error: ''
                     };
+                    
                     resolve();
                 })
+                
                 .catch((error) => {
                     context.log(`ERROR: ${error}`);
                     context.bindings.myOutputQueueItem = {
