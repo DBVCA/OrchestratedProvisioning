@@ -54,12 +54,38 @@ module.exports = async function (context, myQueueItem) {
                     cadChannelId = getChannelId(context, token, newTeamId, "CAD Team");
                     
                                 const Channelurl = `https://graph.microsoft.com/beta/teams/${newTeamID}/channels/${cadChannelId}/filesFolder`;
+                                context.log("Channel URL:");
                                 context.log(Channelurl);
                                 request.post(Channelurl, {
                                   'name': 'Setup',
                                   'folder': { },
                                   '@microsoft.graph.conflictBehavior': 'fail'
-                                });
+                                }, (error, response, body) => {
+
+                              context.log(`Received a response with status code ${response.statusCode} error=${error}`);
+
+                              if (response && response.statusCode == 202) {
+
+                                // If here we successfully issued the request
+                                const opUrl = `https://graph.microsoft.com/beta${response.headers.location}`;
+                                context.log(`operation url is ${opUrl}`);
+
+                                pollUntilDone(resolve, reject, opUrl, token, NUMBER_OF_RETRIES);
+
+                              } else {
+
+                                context.log(`Exception path response ${response.statusCode}`);
+                                // If here something went wrong, reject with an error
+                                // message
+                                if (error) {
+                                  reject(error);
+                                } else {
+                                  let b = JSON.parse(response.body);
+                                  reject(`${b.error.code} - ${b.error.message}`);
+                                }
+
+                              }
+                            });
 
                     context.bindings.myOutputQueueItem = {
                         success: true,
