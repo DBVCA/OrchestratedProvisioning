@@ -50,8 +50,8 @@ module.exports = async function (context, myQueueItem) {
                 })
                 .then((channelId) => {
                     //newChannelID = channelId;
-                    new Promise(resolve, reject) => {  
-                    CadTeamChannelID =  getChannelId(context, token, newTeamId, "CAD Team");
+                    var nProm new Promise(resolve) => {  
+                    return getChannelId(context, token, newTeamId, "CAD Team");
                     .then((cadChannelId)  => {
                                 const Channelurl = `https://graph.microsoft.com/beta/teams/${newTeamID}/channels/${cadChannelId}/filesFolder`;
                                 context.log(Channelurl);
