@@ -51,7 +51,7 @@ module.exports = async function (context, myQueueItem) {
                 .then((channelId) => {
                     //newChannelID = channelId;
                       
-                    cadChannelId = getChannelId(context, token, newTeamId, "CAD Team");
+                    /*cadChannelId = getChannelId(context, token, newTeamId, "CAD Team");
                     
                                 const Channelurl = `https://graph.microsoft.com/beta/teams/${newTeamID}/channels/${cadChannelId}/filesFolder`;
                                 context.log("Channel URL:");
@@ -85,7 +85,7 @@ module.exports = async function (context, myQueueItem) {
                                 }
 
                               }
-                            });
+                            });*/
 
                     context.bindings.myOutputQueueItem = {
                         success: true,
