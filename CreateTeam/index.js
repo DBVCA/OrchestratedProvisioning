@@ -55,7 +55,7 @@ module.exports = async function (context, myQueueItem) {
                     .then((cadChannelId)  => {
                                 const Channelurl = `https://graph.microsoft.com/beta/teams/${newTeamID}/channels/${cadChannelId}/filesFolder`;
                                 context.log(Channelurl);
-                                request.post(url, {
+                                request.post(Channelurl, {
                                   'name': 'Setup',
                                   'folder': { },
                                   '@microsoft.graph.conflictBehavior': 'fail'
