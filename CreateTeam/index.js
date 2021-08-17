@@ -50,9 +50,9 @@ module.exports = async function (context, myQueueItem) {
                 })
                 .then((channelId) => {
                     //newChannelID = channelId;
-                    var nProm new Promise(resolve) => {  
-                    return getChannelId(context, token, newTeamId, "CAD Team");
-                    .then((cadChannelId)  => {
+                      
+                    cadChannelId = getChannelId(context, token, newTeamId, "CAD Team");
+                    
                                 const Channelurl = `https://graph.microsoft.com/beta/teams/${newTeamID}/channels/${cadChannelId}/filesFolder`;
                                 context.log(Channelurl);
                                 request.post(Channelurl, {
@@ -60,11 +60,7 @@ module.exports = async function (context, myQueueItem) {
                                   'folder': { },
                                   '@microsoft.graph.conflictBehavior': 'fail'
                                 });
-                                
-                        }
-                        
-                        
-                    };
+
                     context.bindings.myOutputQueueItem = {
                         success: true,
                         requestId: requestId,
