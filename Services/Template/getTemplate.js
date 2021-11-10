@@ -9,7 +9,7 @@ module.exports = function getTemplate(context, token, jsonTemplate,
     displayName, description, owner) {
 
     context.log('Getting template ' + jsonTemplate);
-	if( jsonTemplate == "GreenTemplate")
+	/*if( jsonTemplate == "GreenTemplate")
 	{
 		
 	    return new Promise((resolve, reject) => {
@@ -81,7 +81,7 @@ module.exports = function getTemplate(context, token, jsonTemplate,
 	});	
 	}
 	else
-	{
+	{*/
 		return new Promise((resolve, reject) => {
 
 		var template;   // The template as a JavaScript object
@@ -126,7 +126,7 @@ module.exports = function getTemplate(context, token, jsonTemplate,
 		    reject(`Error in getTemplate(): ${ex}`);
 		});
 		});
-	}
+	//}
         
 
 
