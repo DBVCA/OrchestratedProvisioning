@@ -21,7 +21,7 @@
         "value": "55151467-77a9-435c-9926-c195bf0a8349"
       },
       "CLIENT_SECRET": {
-        "value": "@Microsoft.KeyVault(SecretUri=https://teamsorchestrationkeys.vault.azure.net/secrets/TeamsOrchestrationApp/b89813a518184530afb0fdbf55c56855)"
+        "value": "@Microsoft.KeyVault(SecretUri=https://teamsorchestrationkeys.vault.azure.net/secrets/TeamsOrchestrationApp/811c14f84c60485881e9e19636ac6d99)"
       },
       "TEMPLATE_SITE_URL": {
         "value": "/sites/TeamsCreationRequest"
